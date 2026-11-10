@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:name=".AssistantApplication" android:label="ColorOS录音助手" android:icon="@android:drawable/ic_btn_speak_now" android:allowBackup="false" android:supportsRtl="true"
+        android:theme="@style/AppTheme" android:description="@string/module_description">
+        <activity android:name=".SettingsActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
+            </intent-filter>
+        </activity>
+        <activity-alias android:name=".Launcher" android:targetActivity=".SettingsActivity" android:exported="true" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+    </application>
+</manifest>

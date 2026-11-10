@@ -1,0 +1,44 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'io.github.hunter.recordingenhance'
+    compileSdk 37
+    buildToolsVersion '37.0.0'
+    defaultConfig {
+        applicationId 'io.github.hunter.recordingenhance'
+        minSdk 36
+        targetSdk 36
+        versionCode 12
+        versionName '1.5.0'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    compileOnly 'io.github.libxposed:api:102.0.0'
+    implementation 'io.github.libxposed:service:102.0.0'
+}
+
+tasks.register('gestureSelfTest', JavaExec) {
+    dependsOn 'compileDebugJavaWithJavac'
+    classpath = files(layout.buildDirectory.dir('intermediates/javac/debug/compileDebugJavaWithJavac/classes'))
+    mainClass = 'io.github.hunter.recordingenhance.TriplePressSelfTest'
+    enableAssertions = true
+}
+
+tasks.register('discardSelfTest', JavaExec) {
+    dependsOn 'compileDebugJavaWithJavac'
+    classpath = files(layout.buildDirectory.dir('intermediates/javac/debug/compileDebugJavaWithJavac/classes'))
+    mainClass = 'io.github.hunter.recordingenhance.DiscardSessionSelfTest'
+    enableAssertions = true
+}
+
+tasks.register('visibilitySelfTest', JavaExec) {
+    dependsOn 'compileDebugJavaWithJavac'
+    classpath = files(layout.buildDirectory.dir('intermediates/javac/debug/compileDebugJavaWithJavac/classes'))
+    mainClass = 'io.github.hunter.recordingenhance.RecordingVisibilitySelfTest'
+    enableAssertions = true
+}

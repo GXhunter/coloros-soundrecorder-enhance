@@ -1,0 +1,3 @@
+<resources>
+    <string name="module_description">自定义锁屏音量快捷录音、反馈和通知显示，支持废弃当前录音。适配 ColorOS 录音 17.8.8。</string>
+</resources>
